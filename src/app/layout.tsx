@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,9 +11,9 @@ const inter = Inter({
 
 // Wordmark font. Swap this one import to audition others (Instrument_Serif,
 // Newsreader, Space_Grotesk, etc.) — everything else stays the same.
-const wordmark = DM_Serif_Display({
+const wordmark = Geist({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["700"],
   display: "swap",
   variable: "--font-wordmark",
 });
