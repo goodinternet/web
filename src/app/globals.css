@@ -8,6 +8,7 @@
   --green: #10B981;
   --red: #FF2D2D;
   --mark-color: #eaeaea;
+  --field-bg: #f5f5f5;
 }
 
 /* auto dark — follows the device */
@@ -47,8 +48,8 @@ body {
 }
 
 .mark {
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   display: block;
   background-color: var(--mark-color, var(--green));
   -webkit-mask: url("/g-mark.png") center / contain no-repeat;
@@ -56,13 +57,12 @@ body {
 }
 
 .wordmark {
-  margin-top: 24px;
-  font-family: var(--font-wordmark), system-ui, sans-serif;
-  font-size: 1rem;
+  margin-top: 26px;
+  font-family: var(--font-wordmark), Georgia, serif;
+  font-size: 1.125rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  line-height: 1.05;
+  letter-spacing: 0;
+  line-height: 1.1;
   color: var(--wordmark, var(--green));
 }
 
@@ -103,7 +103,7 @@ body {
 
 /* SOON — Geist ultra-black, hidden until hover/tap, flashes red */
 .soon {
-  font-family: var(--font-wordmark), system-ui, sans-serif;
+  font-family: var(--font-soon), system-ui, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.03em;
