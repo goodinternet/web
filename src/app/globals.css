@@ -48,8 +48,8 @@ body {
 }
 
 .mark {
-  width: 280px;
-  height: 280px;
+  width: min(280px, 82vw);
+  height: min(280px, 82vw);
   display: block;
   background-color: var(--mark-color, var(--green));
   -webkit-mask: url("/g-mark.png") center / contain no-repeat;
@@ -148,4 +148,6 @@ body {
 @media (max-width: 680px) {
   .doc { padding: 48px 24px; }
   .claim-field { min-width: 0; width: 100%; }
+  .wordmark { font-size: 0.875rem; }
+  .tagline { font-size: 0.6875rem; margin-top: 12px; }
 }
