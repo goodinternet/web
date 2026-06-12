@@ -12,7 +12,7 @@
 /* auto dark — follows the device */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #292929;
+    --bg: #1A1A1A;
     --ink: #F4F4F5;
     --ink-2: #A1A1AA;
     --line: #454545;
