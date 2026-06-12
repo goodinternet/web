@@ -13,12 +13,13 @@
 /* auto dark — follows the device */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1A1A1A;
+    --bg: #0F0F0F;
     --ink: #F4F4F5;
     --ink-2: #A1A1AA;
     --line: #454545;
     --wordmark: #f2f2f2;
     --mark-color: #eaeaea;
+    --field-bg: #1A1A1A;
   }
 }
 
@@ -89,6 +90,7 @@ body {
   padding: 9px 9px 9px 13px;
   border: 1px solid var(--line);
   border-radius: 999px;
+  background: var(--field-bg, transparent);
   cursor: pointer;
   transition: border-color 0.2s ease;
 }
