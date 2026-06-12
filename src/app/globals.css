@@ -87,7 +87,7 @@ body {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left center;
-  animation: drawUnderline 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.75s both;
+  animation: drawUnderline 0.57s cubic-bezier(0.33, 0, 0.2, 1) 0.72s both;
 }
 
 .tagline {
