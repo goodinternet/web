@@ -61,7 +61,7 @@ body {
 .wordmark {
   margin-top: 26px;
   font-family: var(--font-wordmark), Georgia, serif;
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   font-weight: 700;
   font-style: italic;
   letter-spacing: -1px;
@@ -133,24 +133,31 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* entrance — blur-rise (text) + scale-settle (G), ease-out-expo */
+/* entrance — text settles first, then the G floats down slowly to crown it */
 .wordmark, .tagline, .claim {
-  animation: riseBlur 0.55s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: riseBlur 0.5s both cubic-bezier(0.16, 1, 0.3, 1);
 }
+.wordmark { animation-delay: 0.1s; }
+.tagline { animation-delay: 0.2s; }
+.claim { animation-delay: 0.3s; }
 .mark {
-  animation: markIn 0.8s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: drop 3.6s cubic-bezier(0.37, 0, 0.63, 1) 0.2s both,
+             breathe 5s ease-in-out 3.8s infinite;  /* gentle drift-in, lands, then breathes */
 }
-.mark { animation-delay: 0.05s; }
-.wordmark { animation-delay: 0.16s; }
-.tagline { animation-delay: 0.24s; }
-.claim { animation-delay: 0.34s; }
 
+@keyframes drop {
+  0%   { opacity: 0; transform: translateY(-120vh); filter: blur(9px); }
+  38%  { opacity: 0; }
+  60%  { opacity: 1; }
+  90%  { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.018); }
+}
 @keyframes riseBlur {
   from { opacity: 0; transform: translateY(10px); filter: blur(8px); }
-  to   { opacity: 1; transform: none; filter: blur(0); }
-}
-@keyframes markIn {
-  from { opacity: 0; transform: scale(0.96) translateY(8px); filter: blur(10px); }
   to   { opacity: 1; transform: none; filter: blur(0); }
 }
 
