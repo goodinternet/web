@@ -61,6 +61,7 @@ body {
   font-family: var(--font-wordmark), Georgia, serif;
   font-size: 1.25rem;
   font-weight: 400;
+  font-style: italic;
   letter-spacing: 0;
   line-height: 1.1;
   color: var(--wordmark, var(--green));

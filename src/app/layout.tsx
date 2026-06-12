@@ -14,6 +14,7 @@ const inter = Inter({
 const wordmark = Radley({
   subsets: ["latin"],
   weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
   variable: "--font-wordmark",
 });
