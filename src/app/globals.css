@@ -90,7 +90,7 @@ body {
   align-items: center;
   gap: 10px;
   min-width: 268px;
-  padding: 9px 9px 9px 13px;
+  padding: 11px 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--field-bg, transparent);
@@ -133,18 +133,27 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* entrance */
-.mark, .wordmark, .tagline, .claim {
-  animation: fadeUp 0.6s both cubic-bezier(0.2, 0.6, 0.2, 1);
+/* entrance — blur-rise (text) + scale-settle (G), ease-out-expo */
+.wordmark, .tagline, .claim {
+  animation: riseBlur 0.55s both cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mark {
+  animation: markIn 0.8s both cubic-bezier(0.16, 1, 0.3, 1);
 }
 .mark { animation-delay: 0.05s; }
-.wordmark { animation-delay: 0.13s; }
-.tagline { animation-delay: 0.21s; }
-.claim { animation-delay: 0.31s; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
+.wordmark { animation-delay: 0.16s; }
+.tagline { animation-delay: 0.24s; }
+.claim { animation-delay: 0.34s; }
+
+@keyframes riseBlur {
+  from { opacity: 0; transform: translateY(10px); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
 }
+@keyframes markIn {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); filter: blur(10px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mark, .wordmark, .tagline, .claim { animation: none; }
 }
