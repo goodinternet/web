@@ -13,7 +13,7 @@ const inter = Inter({
 // Newsreader, Space_Grotesk, etc.) — everything else stays the same.
 const wordmark = Geist({
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["700", "900"],
   display: "swap",
   variable: "--font-wordmark",
 });
