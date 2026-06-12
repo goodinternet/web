@@ -20,8 +20,7 @@ export default function ClaimField() {
       animate="rest"
       whileHover="deny"
       whileTap="deny"
-      onTap={reveal}
-      onClick={reveal}
+      onPointerDown={reveal}
     >
       <svg
         className="lock"
