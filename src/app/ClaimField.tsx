@@ -1,10 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "motion/react";
 
 export default function ClaimField() {
   const [revealed, setRevealed] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const reveal = () => {
+    setRevealed(true);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setRevealed(false), 2200); // auto-clear (mobile)
+  };
+
   return (
     <motion.div
       className={`claim-field${revealed ? " revealed" : ""}`}
@@ -12,7 +20,7 @@ export default function ClaimField() {
       animate="rest"
       whileHover="deny"
       whileTap="deny"
-      onClick={() => setRevealed((v) => !v)}
+      onClick={reveal}
     >
       <svg
         className="lock"
