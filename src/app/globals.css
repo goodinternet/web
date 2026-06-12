@@ -19,7 +19,7 @@
     --ink-2: #A1A1AA;
     --line: #454545;
     --wordmark: #f2f2f2;
-    --mark-color: #eaeaea;
+    --mark-color: #292929;
     --field-bg: #1A1A1A;
   }
 }
@@ -145,8 +145,10 @@ body {
   .mark, .wordmark, .tagline, .claim { animation: none; }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 680px) and (prefers-color-scheme: light) {
   :root { --mark-color: #dddddd; }
+}
+@media (max-width: 680px) {
   .doc { padding: 48px 24px; }
   .claim-field { min-width: 0; width: 100%; }
   .wordmark { font-size: 1rem; }
