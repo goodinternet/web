@@ -3,7 +3,7 @@ import ClaimField from "./ClaimField";
 export default function Home() {
   return (
     <main className="doc">
-      <img className="mark" src="/g-mark.png" alt="Good Internet" width={108} height={108} />
+      <span className="mark" role="img" aria-label="Good Internet" />
 
       <h1 className="wordmark">Good Internet</h1>
       <p className="tagline">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,9 +11,9 @@ const inter = Inter({
 
 // Wordmark font. Swap this one import to audition others (Instrument_Serif,
 // Newsreader, Space_Grotesk, etc.) — everything else stays the same.
-const wordmark = Fraunces({
+const wordmark = DM_Serif_Display({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
   display: "swap",
   variable: "--font-wordmark",
 });

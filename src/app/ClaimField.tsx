@@ -12,19 +12,21 @@ export default function ClaimField() {
     >
       <svg
         className="lock"
-        width="20"
-        height="20"
+        width="19"
+        height="19"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.6"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden
       >
-        <rect x="5" y="10.5" width="14" height="10" rx="2.5" />
+        {/* body */}
+        <path d="M5 12C5 10.8954 5.89543 10 7 10H17C18.1046 10 19 10.8954 19 12V19C19 20.1046 18.1046 21 17 21H7C5.89543 21 5 20.1046 5 19V12Z" />
+        {/* shackle — hinges open on hover, teases on idle */}
         <motion.path
-          d="M8 10.5 V7 a4 4 0 0 1 8 0 V10.5"
+          d="M16 9.5V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V9.5"
           style={{ transformBox: "fill-box", transformOrigin: "0% 100%" }}
           variants={{
             rest: {
@@ -32,16 +34,17 @@ export default function ClaimField() {
               transition: { duration: 0.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 3.4 },
             },
             hover: {
-              rotate: -34,
+              rotate: -30,
               transition: { type: "spring", bounce: 0.45, visualDuration: 0.45 },
             },
           }}
         />
-        <circle cx="12" cy="15.3" r="1.25" fill="currentColor" stroke="none" />
+        {/* keyhole */}
+        <path d="M12 14V17" />
       </svg>
 
       <span className="ph">@username</span>
-      <span className="soon">soon</span>
+      <span className="soon"><span className="soon-dot" aria-hidden /> soon</span>
     </motion.div>
   );
 }
