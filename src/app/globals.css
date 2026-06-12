@@ -17,7 +17,7 @@
     --ink-2: #A1A1AA;
     --line: #454545;
     --wordmark: #f2f2f2;
-    --mark-color: #10B981;
+    --mark-color: #f2f2f2;
   }
 }
 
@@ -45,12 +45,12 @@ body {
 }
 
 .mark {
-  width: 108px;
-  height: 108px;
+  width: 160px;
+  height: 160px;
   display: block;
   background-color: var(--mark-color, var(--green));
-  -webkit-mask: url("/g-mark.svg") center / contain no-repeat;
-          mask: url("/g-mark.svg") center / contain no-repeat;
+  -webkit-mask: url("/g-mark.png") center / contain no-repeat;
+          mask: url("/g-mark.png") center / contain no-repeat;
 }
 
 .wordmark {
