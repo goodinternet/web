@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Caprasimo, Geist } from "next/font/google";
+import { Inter, Young_Serif, Geist } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,7 +11,7 @@ const inter = Inter({
 
 // Wordmark font. Swap this one import to audition others (Instrument_Serif,
 // Newsreader, Space_Grotesk, etc.) — everything else stays the same.
-const wordmark = Caprasimo({
+const wordmark = Young_Serif({
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
