@@ -146,6 +146,7 @@ body {
 }
 
 @media (max-width: 680px) {
+  :root { --mark-color: #e3e3e3; }
   .doc { padding: 48px 24px; }
   .claim-field { min-width: 0; width: 100%; }
   .wordmark { font-size: 1rem; }
