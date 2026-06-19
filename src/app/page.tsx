@@ -147,6 +147,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <span className="hero-soon">DROPPING SOON</span>
       </div>
     </main>
   );

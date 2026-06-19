@@ -75,83 +75,138 @@ body {
 
 .hero-wordmark {
   font-family: var(--font-dongle), sans-serif;
-  font-size: 0.8125rem;
+  font-size: 1.925rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: var(--wordmark);
   text-align: left;
   white-space: nowrap;
+  animation: riseBlur 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-tagline {
-  margin-top: 2px;
+  align-self: flex-start;
+  margin-top: 7px;
   max-width: 34ch;
+  padding: 4px 11px;
+  border-radius: 6px;
+  background: rgba(24, 24, 27, 0.028);
   font-family: var(--font-inter), sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.84906rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--ink-2);
+  color: #A1A1AA;
+  animation: riseBlur 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .hero-icons {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 11px;
-  margin-top: 44px;
+  gap: 4px;
+  margin-top: 40px;
+  margin-left: -10px; /* offset row padding so icons align with the wordmark */
   padding: 0;
   list-style: none;
 }
 
 .hero-icon-item {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 23px;
-  height: 23px;
-}
-
-/* label rolls out of the icon on hover, inside an extremely light pill */
-.hero-icon-label {
-  position: absolute;
-  top: 50%;
-  left: 23px;
-  white-space: nowrap;
-  padding: 5px 12px;
+  gap: 12px;
+  padding: 6px 10px;
   border-radius: 999px;
-  background: var(--pill);
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--wordmark);
-  pointer-events: none;
-  transform: translateY(-50%);
-  transform-origin: left center;
-  clip-path: inset(0 100% 0 0 round 999px);
-  transition: clip-path 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.18s ease;
 }
 
-.hero-icon:hover + .hero-icon-label {
-  clip-path: inset(0 0 0 0 round 999px);
+/* hover highlight — light pill behind the row (pointer devices only) */
+@media (hover: hover) and (pointer: fine) {
+  .hero-icon-item:hover {
+    background-color: var(--pill);
+  }
 }
 
 .hero-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 23px;
-  height: 23px;
+  width: 20.9px;
+  height: 20.9px;
+  flex: none;
   color: var(--wordmark);
-  opacity: 1;
+  /* entrance: icon fades up first */
+  opacity: 0;
+  transform: translateY(6px);
+  animation: heroIconIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-icon svg {
   display: block;
-  width: 23px;
-  height: 23px;
+  width: 20.9px;
+  height: 20.9px;
+}
+
+/* the label rolls out of the icon — the same wipe, now an on-load reveal */
+.hero-icon-label {
+  white-space: nowrap;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.890625rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  clip-path: inset(0 100% 0 0);
+  animation: heroLabelRoll 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* sequential reveal — one row at a time, each beginning as the prior finishes */
+.hero-icon-item:nth-child(1) .hero-icon        { animation-delay: 0.30s; }
+.hero-icon-item:nth-child(1) .hero-icon-label  { animation-delay: 0.36s; }
+.hero-icon-item:nth-child(2) .hero-icon        { animation-delay: 0.72s; }
+.hero-icon-item:nth-child(2) .hero-icon-label  { animation-delay: 0.78s; }
+.hero-icon-item:nth-child(3) .hero-icon        { animation-delay: 1.14s; }
+.hero-icon-item:nth-child(3) .hero-icon-label  { animation-delay: 1.20s; }
+.hero-icon-item:nth-child(4) .hero-icon        { animation-delay: 1.56s; }
+.hero-icon-item:nth-child(4) .hero-icon-label  { animation-delay: 1.62s; }
+
+/* primary-color icons */
+.hero-icon-item:nth-child(1) .hero-icon { color: #FF1F1F; } /* red */
+.hero-icon-item:nth-child(2) .hero-icon { color: #FFC400; } /* yellow */
+.hero-icon-item:nth-child(3) .hero-icon { color: #1366FF; } /* blue */
+.hero-icon-item:nth-child(4) .hero-icon { color: #00BC4D; } /* green */
+
+/* tiny status pill — the last thing to arrive */
+.hero-soon {
+  align-self: flex-start;
+  margin-top: 32px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(192, 92, 230, 0.07);
+  color: #C264E0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  transform-origin: left center;
+  animation: heroSoonIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
+}
+
+@keyframes heroSoonIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes heroIconIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes heroLabelRoll {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 
 .doc {
@@ -322,7 +377,10 @@ body {
   .wordmark::after { animation: none; transform: scaleX(1); }
   .claim-field .ph, .claim-field .reveal-text { transition: none; }
   .claim-field.is-shaking { animation: none; transform: none; }
-  .hero-icon-label { transition: none; }
+  .hero-wordmark, .hero-tagline { animation: none; }
+  .hero-icon { animation: none; opacity: 1; transform: none; }
+  .hero-icon-label { animation: none; clip-path: inset(0 0 0 0); }
+  .hero-soon { animation: none; opacity: 1; transform: none; }
 }
 
 @media (max-width: 680px) and (prefers-color-scheme: light) {
