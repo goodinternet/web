@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Radley, Geist } from "next/font/google";
+import { Dongle, Inter, Radley, Geist } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,6 +7,13 @@ const inter = Inter({
   weight: ["400"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const dongle = Dongle({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  display: "swap",
+  variable: "--font-dongle",
 });
 
 // Wordmark font. Swap this one import to audition others (Instrument_Serif,
@@ -36,7 +43,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${wordmark.variable} ${soon.variable}`}>
+    <html lang="en" className={`${inter.variable} ${dongle.variable} ${wordmark.variable} ${soon.variable}`}>
       <body>{children}</body>
     </html>
   );
