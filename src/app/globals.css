@@ -11,6 +11,7 @@
   --field-bg: #f5f5f5;
   --pill: #f4f4f5;
   --wordmark: #000000;
+  --g-ink: #000000;
   --site-width: 420px;
   --page-gutter: 28px;
   /* error-state shake (Transitions.dev) */
@@ -29,6 +30,7 @@
     --ink-2: #A1A1AA;
     --line: #454545;
     --wordmark: #f2f2f2;
+    --g-ink: #f2f2f2;
     --mark-color: #2e2e2e;
     --field-bg: #1A1A1A;
     --pill: #1d1d20;
@@ -67,34 +69,56 @@ body {
   top: 50%;
   left: 50%;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  /* hug the lockup so the center-transform centers the unit itself */
+  width: max-content;
+  max-width: calc(100% - var(--page-gutter) * 2);
+  transform: translate(-50%, -50%);
+}
+
+/* small G mark sitting beside the label (ref: BAKERS mark-beside-text) */
+.hero-g {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  /* recolor the SVG shape via mask so it's black in light, light in dark */
+  background-color: var(--g-ink);
+  -webkit-mask: url("/gi-g-lockup.svg") center / contain no-repeat;
+          mask: url("/gi-g-lockup.svg") center / contain no-repeat;
+  animation: riseBlur 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-text {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: min(var(--site-width), calc(100% - var(--page-gutter) * 2));
-  transform: translate(-50%, -50%);
 }
 
 /* onwend.com label treatment — k (bold dark) over v (regular gray), 11px */
 .hero-wordmark {
   font-family: var(--font-inter), Helvetica, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 11.3px;
   font-weight: 700;
   letter-spacing: 0.01em;
   line-height: 1.3;
   color: #181818;
   text-align: left;
   white-space: nowrap;
-  animation: riseBlur 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* wordmark follows the mark — lighter blur so the tiny type stays crisp */
+  animation: riseBlurText 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
 .hero-tagline {
   align-self: flex-start;
   margin-top: 2px;
   font-family: var(--font-inter), Helvetica, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 11.3px;
   font-weight: 400;
   line-height: 1.3;
   color: #a0a0a0;
-  animation: riseBlur 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  animation: riseBlurText 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
 }
 
 .hero-icons {
@@ -363,6 +387,11 @@ body {
   from { opacity: 0; transform: translateY(10px); filter: blur(8px); }
   to   { opacity: 1; transform: none; filter: blur(0); }
 }
+/* lighter blur for small type so it doesn't go mushy on entrance */
+@keyframes riseBlurText {
+  from { opacity: 0; transform: translateY(10px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
 
 @keyframes drawUnderline {
   from { transform: scaleX(0); }
@@ -374,10 +403,17 @@ body {
   .wordmark::after { animation: none; transform: scaleX(1); }
   .claim-field .ph, .claim-field .reveal-text { transition: none; }
   .claim-field.is-shaking { animation: none; transform: none; }
-  .hero-wordmark, .hero-tagline { animation: none; }
+  .hero-g, .hero-wordmark, .hero-tagline { animation: none; }
   .hero-icon { animation: none; opacity: 1; transform: none; }
   .hero-icon-label { animation: none; clip-path: inset(0 0 0 0); }
   .hero-soon { animation: none; opacity: 1; transform: none; }
+}
+
+/* desktop — scale the lockup up; mobile keeps the smaller base size */
+@media (min-width: 681px) {
+  .hero-intro { gap: 16px; }
+  .hero-g { width: 56px; height: 56px; }
+  .hero-wordmark, .hero-tagline { font-size: 16px; }
 }
 
 @media (max-width: 680px) and (prefers-color-scheme: light) {
@@ -387,10 +423,9 @@ body {
   .doc { padding: 48px 24px; }
   .claim-field { min-width: 0; width: 100%; padding: 10px 30px; }
   .tagline { font-size: 0.6875rem; margin-top: 12px; }
-  /* left-anchor the label with a bigger gutter on phones */
+  /* center the lockup on phones too */
   .hero-intro {
-    left: 44px;
-    transform: translate(0, -50%);
-    width: calc(100% - 44px - 24px);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
