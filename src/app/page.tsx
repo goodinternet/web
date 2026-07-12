@@ -12,19 +12,35 @@ export default function Home() {
         padding: "24px",
       }}
     >
-      <Image
-        className="center-mark"
-        src="/gi-001.svg"
-        alt="Good Internet"
-        width="5054"
-        height="611"
-        priority
-        style={{
-          display: "block",
-          width: "clamp(280px, 31vw, 320px)",
-          height: "auto",
-        }}
-      />
+      <div className="hero">
+      <div className="lockup" role="img" aria-label="Good Internet">
+        <span className="lockup-mark" aria-hidden="true">
+          <span className="lockup-squash">
+            <span className="lockup-spin">
+              <Image
+                src="/gi-001-mark.svg"
+                alt=""
+                width="620"
+                height="611"
+                priority
+                style={{ display: "block", width: "100%", height: "auto" }}
+              />
+            </span>
+          </span>
+        </span>
+        <span className="lockup-gap" aria-hidden="true" />
+        <Image
+          className="lockup-word"
+          src="/gi-001-word.svg"
+          alt=""
+          width="4292"
+          height="611"
+          priority
+          style={{ display: "block", height: "auto" }}
+        />
+      </div>
+      <p className="tagline">A considered community</p>
+      </div>
     </main>
   );
 }
