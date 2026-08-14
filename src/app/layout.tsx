@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.goodinternet.space"),
   title: "Good Internet",
   description:
     "A considered community where great things get found, shared, and argued over.",
