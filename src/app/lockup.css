@@ -39,8 +39,13 @@
   line-height: 1.6;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #52525b;
+  color: var(--tagline);
   animation: gi-tagline 450ms 1250ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.lockup-mark img,
+img.lockup-word {
+  filter: var(--mark-filter);
 }
 
 @keyframes gi-tagline {

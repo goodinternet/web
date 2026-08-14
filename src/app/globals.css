@@ -3,6 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #18181b;
+  --tagline: #52525b;
+  --mark-filter: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #18181b;
+    --foreground: #ffffff;
+    --tagline: #a1a1aa;
+    --mark-filter: invert(1);
+  }
 }
 
 * {
