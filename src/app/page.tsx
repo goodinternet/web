@@ -20,8 +20,8 @@ export default function Home() {
               <Image
                 src="/gi-001-mark.svg"
                 alt=""
-                width="620"
-                height="611"
+                width="523"
+                height="574"
                 priority
                 style={{ display: "block", width: "100%", height: "auto" }}
               />
