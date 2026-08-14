@@ -39,7 +39,7 @@ export default function Home() {
           style={{ display: "block", height: "auto" }}
         />
       </div>
-      <p className="tagline">A considered community</p>
+      <p className="tagline">A considered place for the thoughtful web.</p>
       </div>
     </main>
   );
